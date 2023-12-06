@@ -1,13 +1,13 @@
-package lt.codeacademy.javau7.final_project;
+package lt.codeacademy.javau7.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FinalProjectApplication {
+public class ProjectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FinalProjectApplication.class, args);
+		SpringApplication.run(ProjectApplication.class, args);
 	}
 
 }
