@@ -26,7 +26,7 @@ public class Admin {
 
     private String role;
 
-    private List<Recipe> recipes;
+    //private List<Recipe> recipes;
 
     public Admin() {
     }
@@ -79,12 +79,12 @@ public class Admin {
 		this.role = role;
 	}
 
-	public List<Recipe> getRecipes() {
-		return recipes;
-	}
+	// public List<Recipe> getRecipes() {
+	// 	return recipes;
+	// }
 
-	public void setRecipes(List<Recipe> recipes) {
-		this.recipes = recipes;
-	}
+	// public void setRecipes(List<Recipe> recipes) {
+	// 	this.recipes = recipes;
+	// }
 	
 }

@@ -9,16 +9,16 @@ import lt.codeacademy.javau7.finalproject1.entities.Recipe;
 @Service
 public interface RecipeService {
     
-    public List<Recipe> findAll();
+    // public List<Recipe> findAll();
 
-    public Recipe findById(Long recipeId);
+    // public Recipe findById(Long recipeId);
 
-    public void save(Recipe recipe);
+    // public void save(Recipe recipe);
 
-    public List<Recipe> findByUserId(int id);
+    // public List<Recipe> findByUserId(int id);
 
-    public void deleteAll(List<Recipe> recipes);
+    // public void deleteAll(List<Recipe> recipes);
 
-    public void deleteById(Long recipeId);
+    // public void deleteById(Long recipeId);
     
 }

@@ -18,35 +18,35 @@ public class RecipeServiceImpl implements RecipeService {
         this.recipeRepository = recipeRepository;
     }
 
-    @Override
-    public List<Recipe> findAll() {
-        return recipeRepository.findAll();
-    }
+//     @Override
+//     public List<Recipe> findAll() {
+//         return recipeRepository.findAll();
+//     }
 
-    @Override
-    public Recipe findById(Long recipeId) {
-        Optional<Recipe> optionalRecipe = recipeRepository.findById(recipeId);
-        return optionalRecipe.orElse(null);
-    }
+//     @Override
+//     public Recipe findById(Long recipeId) {
+//         Optional<Recipe> optionalRecipe = recipeRepository.findById(recipeId);
+//         return optionalRecipe.orElse(null);
+//     }
 
-    @Override
-    public void save(Recipe recipe) {
-        recipeRepository.save(recipe);
-    }
+//     @Override
+//     public void save(Recipe recipe) {
+//         recipeRepository.save(recipe);
+//     }
 
-    @Override
-    public List<Recipe> findByUserId(int userId) {
-        return recipeRepository.findByUserId(userId);
-    }
+//     @Override
+//     public List<Recipe> findByUserId(int userId) {
+//         return recipeRepository.findByUserId(userId);
+//     }
 
-    @Override
-    public void deleteAll(List<Recipe> recipes) {
-        recipeRepository.deleteAll(recipes);
-    }
+//     @Override
+//     public void deleteAll(List<Recipe> recipes) {
+//         recipeRepository.deleteAll(recipes);
+//     }
 
-    @Override
-    public void deleteById(Long recipeId) {
-        recipeRepository.deleteById(recipeId);
-    }
+//     @Override
+//     public void deleteById(Long recipeId) {
+//         recipeRepository.deleteById(recipeId);
+//     }
 
 }

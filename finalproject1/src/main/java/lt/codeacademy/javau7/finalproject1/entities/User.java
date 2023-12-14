@@ -30,9 +30,9 @@ public class User {
 
     private String role;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Recipe> recipes;
+    // @JsonIgnore
+    // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private List<Recipe> recipes;
 
     private int recipeCount;
 
@@ -94,13 +94,13 @@ public class User {
         this.role = role;
     }
 
-    public List<Recipe> getRecipes() {
-        return recipes;
-    }
+    // public List<Recipe> getRecipes() {
+    //     return recipes;
+    // }
 
-    public void setRecipes(List<Recipe> recipes) {
-        this.recipes = recipes;
-    }
+    // public void setRecipes(List<Recipe> recipes) {
+    //     this.recipes = recipes;
+    // }
 
     public int getRecipeCount() {
         return recipeCount;
