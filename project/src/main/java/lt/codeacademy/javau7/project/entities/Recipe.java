@@ -10,13 +10,10 @@ public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "recipe_id", nullable = false)
-    private Long recipe_id;
+    private Long recipeId;
 
-    @Column(name = "title")
     private String title;
 
-    @Column(name = "description")
     private String description;
 
     @ManyToOne
@@ -34,12 +31,12 @@ public class Recipe {
         this.user = user;
     }
 
-    public Long getRecipe_id() {
-        return recipe_id;
+    public Long getRecipeId() {
+        return recipeId;
     }
 
-    public void setRecipe_id(Long recipe_id) {
-        this.recipe_id = recipe_id;
+    public void setRecipeId(Long recipeId) {
+        this.recipeId = recipeId;
     }
 
     public String getTitle() {

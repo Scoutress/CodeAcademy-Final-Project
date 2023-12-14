@@ -15,7 +15,6 @@ public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ingredient_id", nullable = false)
     private Long id;
 
     @Column(name = "name")

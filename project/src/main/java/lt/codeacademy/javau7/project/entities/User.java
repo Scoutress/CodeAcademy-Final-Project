@@ -11,22 +11,16 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id", nullable = false)
     private int id;
 
-    @Column(name = "first_name", columnDefinition = "VARCHAR(255)")
     private String firstName;
 
-    @Column(name = "last_name", columnDefinition = "VARCHAR(255)")
     private String lastName;
 
-    @Column(name = "email", columnDefinition = "VARCHAR(255)")
     private String email;
 
-    @Column(name = "username", columnDefinition = "VARCHAR(255)")
     private String username;
 
-    @Column(name = "role", columnDefinition = "VARCHAR(255)")
     private String role;
 
     @JsonIgnore
