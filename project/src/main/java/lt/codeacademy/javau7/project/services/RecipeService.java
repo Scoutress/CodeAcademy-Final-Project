@@ -5,15 +5,17 @@ import java.util.List;
 import lt.codeacademy.javau7.project.entities.Recipe;
 
 public interface RecipeService {
-
-//     public void save(Recipe recipe);
-
-//     public List<Recipe> findByUser(User user);
-
-//     public Recipe findById(Long id);
-
-//     public void deleteById(Long id);
-
+    
     public List<Recipe> findAll();
+
+    public Recipe findById(Long recipeId);
+
+    public void save(Recipe recipe);
+
+    public List<Recipe> findByUserId(int id);
+
+    public void deleteAll(List<Recipe> recipes);
+
+    public void deleteById(Long recipeId);
     
 }

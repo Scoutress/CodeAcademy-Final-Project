@@ -1,17 +1,21 @@
-// package lt.codeacademy.javau7.project.services;
+package lt.codeacademy.javau7.project.services;
 
-// import java.util.List;
-// import lt.codeacademy.javau7.project.entities.User;
+import java.util.List;
 
-// public interface UserService {
+import org.springframework.stereotype.Service;
 
-//     List<User> findAll();
+import lt.codeacademy.javau7.project.entities.User;
 
-//     User findById(int id);
+@Service
+public interface UserService {
 
-//     User save(User user);
+    List<User> findAll();
 
-//     void deleteById(int id);
+    User findById(int id);
 
-//     User findByUsername(String username);
-// }
+    User save(User user);
+
+    void deleteById(int id);
+
+    User findByUsername(String username);
+}

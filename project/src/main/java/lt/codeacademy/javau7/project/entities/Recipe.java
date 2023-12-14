@@ -1,19 +1,17 @@
 package lt.codeacademy.javau7.project.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "recipes")
 public class Recipe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "recipe_id", nullable = false)
+    private Long recipe_id;
 
     @Column(name = "title")
     private String title;
@@ -21,15 +19,28 @@ public class Recipe {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "user_id")
-    private int userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    public int getId() {
-        return id;
+    @ElementCollection
+    @CollectionTable(name = "ingredients", joinColumns = @JoinColumn(name = "recipe_id"))
+    private List<Ingredient> ingredients = new ArrayList<>();
+
+    public Recipe() {}
+
+    public Recipe(String title, String description, User user) {
+        this.title = title;
+        this.description = description;
+        this.user = user;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Long getRecipe_id() {
+        return recipe_id;
+    }
+
+    public void setRecipe_id(Long recipe_id) {
+        this.recipe_id = recipe_id;
     }
 
     public String getTitle() {
@@ -48,13 +59,19 @@ public class Recipe {
         this.description = description;
     }
 
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
 
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
 }

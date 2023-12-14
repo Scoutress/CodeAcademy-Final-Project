@@ -1,9 +1,8 @@
-// package lt.codeacademy.javau7.project.repositories;
+package lt.codeacademy.javau7.project.repositories;
 
-// import org.springframework.data.jpa.repository.JpaRepository;
-// import lt.codeacademy.javau7.project.entities.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import lt.codeacademy.javau7.project.entities.User;
 
-// public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-//     User findByUsername(String username);
-// }
+    User findByUsername(String username);}
