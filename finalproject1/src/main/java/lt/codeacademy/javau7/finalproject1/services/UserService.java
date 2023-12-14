@@ -9,15 +9,13 @@ import lt.codeacademy.javau7.finalproject1.entities.User;
 @Service
 public interface UserService {
 
-    // List<User> findAll();
-
-    // User findById(int id);
-
-    // User save(User user);
-
-    // void deleteById(int id);
-
-    // User findByUsername(String username);
-
     List<User> getAllUsers();
+
+    void saveUser(User newUser);
+
+    User getUserById(Long id);
+
+    void updateUser(User updatedUser);
+
+    void deleteById(int id);
 }

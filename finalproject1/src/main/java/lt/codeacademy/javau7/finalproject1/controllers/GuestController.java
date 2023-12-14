@@ -1,45 +1,38 @@
-// package lt.codeacademy.javau7.finalproject1.controllers;
+package lt.codeacademy.javau7.finalproject1.controllers;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import lt.codeacademy.javau7.finalproject1.services.RecipeService;
 
-// import java.util.List;
+@Controller
+public class GuestController {
 
-// import org.springframework.stereotype.Controller;
-// import org.springframework.ui.Model;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PathVariable;
+    private final RecipeService recipeService;
 
-// import lt.codeacademy.javau7.finalproject1.entities.Recipe;
-// import lt.codeacademy.javau7.finalproject1.services.RecipeService;
+    public GuestController(RecipeService theRecipeService) {
+        this.recipeService = theRecipeService;
+    }
 
-// @Controller
-// public class GuestController {
+    // @GetMapping("")
+    // public String getAllRecipes(Model model) {
+    //     List<Recipe> recipes = recipeService.findAll();
+    //     model.addAttribute("recipes", recipes);
+    //     return "recipes/recipe-list";
+    // }
 
-//     private final RecipeService recipeService;
+    @GetMapping("/login")
+    public String showLogin() {
+        return "login";
+    }
 
-//     public GuestController(RecipeService theRecipeService) {
-//         this.recipeService = theRecipeService;
-//     }
+    @GetMapping("/register")
+    public String showRegister() {
+        return "register";
+    }
 
-//     @GetMapping("")
-//     public String getAllRecipes(Model model) {
-//         List<Recipe> recipes = recipeService.findAll();
-//         model.addAttribute("recipes", recipes);
-//         return "recipes/recipe-list";
-//     }
-
-//     @GetMapping("/login")
-//     public String showLogin() {
-//         return "login";
-//     }
-
-//     @GetMapping("/register")
-//     public String showRegister() {
-//         return "register";
-//     }
-
-//     @GetMapping("/recipe/{recipe_id}")
-//     public String showRecipe(@PathVariable("recipe_id") Long recipeId, Model model) {
-//         Recipe recipe = recipeService.findById(recipeId);
-//         model.addAttribute("recipe", recipe);
-//         return "recipes/recipe-details";
-//     }
-// }
+    // @GetMapping("/recipe/{recipe_id}")
+    // public String showRecipe(@PathVariable("recipe_id") Long recipeId, Model model) {
+    //     Recipe recipe = recipeService.findById(recipeId);
+    //     model.addAttribute("recipe", recipe);
+    //     return "recipes/recipe-details";
+    // }
+}
