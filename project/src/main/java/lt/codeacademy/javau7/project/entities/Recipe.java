@@ -23,8 +23,7 @@ public class Recipe {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ElementCollection
-    @CollectionTable(name = "ingredients", joinColumns = @JoinColumn(name = "recipe_id"))
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ingredient> ingredients = new ArrayList<>();
 
     public Recipe() {}
