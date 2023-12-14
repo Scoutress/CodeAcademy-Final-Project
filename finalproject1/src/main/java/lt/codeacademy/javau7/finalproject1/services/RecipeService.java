@@ -8,17 +8,10 @@ import lt.codeacademy.javau7.finalproject1.entities.Recipe;
 
 @Service
 public interface RecipeService {
-    
-    // public List<Recipe> findAll();
 
-    // public Recipe findById(Long recipeId);
+    void saveRecipe(Recipe recipe);
 
-    // public void save(Recipe recipe);
+    List<Recipe> getAllRecipes();
 
-    // public List<Recipe> findByUserId(int id);
-
-    // public void deleteAll(List<Recipe> recipes);
-
-    // public void deleteById(Long recipeId);
     
 }
