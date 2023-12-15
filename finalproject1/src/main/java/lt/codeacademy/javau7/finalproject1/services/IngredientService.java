@@ -9,5 +9,5 @@ import lt.codeacademy.javau7.finalproject1.entities.Ingredient;
 @Service
 public interface IngredientService {
 
-    List<Ingredient> getAllIngr();
+    List<Ingredient> getAllIngred();
 }

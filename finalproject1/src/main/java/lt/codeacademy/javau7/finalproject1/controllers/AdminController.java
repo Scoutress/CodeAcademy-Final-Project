@@ -72,7 +72,7 @@ public class AdminController {
 
     @GetMapping("/ingr/list")
     public String getAllIngr(Model model) {
-        List<Ingredient> ingredients = ingredientService.getAllIngr();
+        List<Ingredient> ingredients = ingredientService.getAllIngred();
         model.addAttribute("ingredients", ingredients);
         return "ingredients/ingredient-list";
     }
