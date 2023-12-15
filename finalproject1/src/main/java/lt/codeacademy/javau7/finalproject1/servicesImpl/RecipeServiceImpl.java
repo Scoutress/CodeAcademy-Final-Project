@@ -9,7 +9,7 @@ import lt.codeacademy.javau7.finalproject1.repositories.RecipeRepository;
 import lt.codeacademy.javau7.finalproject1.services.RecipeService;
 
 @Service
-public class RecipeServiceImpl implements RecipeService {
+public class RecipeServiceImpl implements RecipeService{
 
     private final RecipeRepository recipeRepository;
 
@@ -18,12 +18,8 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public void saveRecipe(Recipe recipe) {
-        recipeRepository.save(recipe);
-    }
-
-    @Override
     public List<Recipe> getAllRecipes() {
         return recipeRepository.findAll();
     }
+    
 }

@@ -1,16 +1,9 @@
 package lt.codeacademy.javau7.finalproject1.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import lt.codeacademy.javau7.finalproject1.services.RecipeService;
 
 @Controller
 public class GuestController {
-
-    private final RecipeService recipeService;
-
-    public GuestController(RecipeService theRecipeService) {
-        this.recipeService = theRecipeService;
-    }
 
     // @GetMapping("")
     // public String getAllRecipes(Model model) {
@@ -18,6 +11,12 @@ public class GuestController {
     //     model.addAttribute("recipes", recipes);
     //     return "recipes/recipe-list";
     // }
+
+    //Laikinas
+    @GetMapping("")
+    public String firstPageTemp() {
+        return "guest-testing-page";
+    }
 
     @GetMapping("/login")
     public String showLogin() {

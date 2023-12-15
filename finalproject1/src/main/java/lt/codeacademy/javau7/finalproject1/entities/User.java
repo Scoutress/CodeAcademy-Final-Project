@@ -1,42 +1,56 @@
 package lt.codeacademy.javau7.finalproject1.entities;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
+import java.util.Collection;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    private String firstName;
-
-    private String lastName;
-
-    private String email;
-
+    @Column(name = "username")
     private String username;
 
-    private String role;
+    @Column(name = "password")
+    private String password;
 
-    // @JsonIgnore
-    // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    // private List<Recipe> recipes;
+    @Column(name = "enabled")
+    private boolean enabled;
 
-    private int recipeCount;
+    @Column(name = "first_name")
+    private String firstName;
 
-    public User() {}
+    @Column(name = "last_name")
+    private String lastName;
 
-    public User(String firstName, String lastName, String email, String username, String role) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+    @Column(name = "email")
+    private String email;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<Role> roles;
+
+    public User() {
+    }
+
+    public User(String username, String password, boolean enabled) {
         this.username = username;
-        this.role = role;
+        this.password = password;
+        this.enabled = enabled;
+    }
+
+    public User(String username, String password, boolean enabled,
+                Collection<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -45,6 +59,30 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getFirstName() {
@@ -71,35 +109,26 @@ public class User {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
+    public Collection<Role> getRoles() {
+        return roles;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 
-    public String getRole() {
-        return role;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", enabled=" + enabled +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
 
-    // public List<Recipe> getRecipes() {
-    //     return recipes;
-    // }
-
-    // public void setRecipes(List<Recipe> recipes) {
-    //     this.recipes = recipes;
-    // }
-
-    public int getRecipeCount() {
-        return recipeCount;
-    }
-
-    public void setRecipeCount(int recipeCount) {
-        this.recipeCount = recipeCount;
-    }
 }

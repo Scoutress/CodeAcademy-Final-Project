@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import lt.codeacademy.javau7.finalproject1.entities.Recipe;
+//import lt.codeacademy.javau7.finalproject1.entities.Recipe;
 import lt.codeacademy.javau7.finalproject1.entities.User;
 import lt.codeacademy.javau7.finalproject1.services.RecipeService;
 import lt.codeacademy.javau7.finalproject1.services.UserService;
@@ -20,11 +20,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/admin")
 public class AdminController {
     private final UserService userService;
-    private final RecipeService recipeService;
+    //private final RecipeService recipeService;
 
     public AdminController(UserService userService, RecipeService recipeService) {
         this.userService = userService;
-        this.recipeService = recipeService;
+        //this.recipeService = recipeService;
     }
 
     @GetMapping("/dashboard")
@@ -67,12 +67,12 @@ public class AdminController {
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //                                Receptai
 
-    @GetMapping("/recipes")
-    public String getAllRecipes(Model model) {
-        List<Recipe> recipes = recipeService.getAllRecipes();
-        model.addAttribute("recipes", recipes);
-        return "recipes/recipe-list-admin";
-    }
+    // @GetMapping("/recipes")
+    // public String getAllRecipes(Model model) {
+    //     List<Recipe> recipes = recipeService.getAllRecipes();
+    //     model.addAttribute("recipes", recipes);
+    //     return "recipes/recipe-list";
+    // }
 
     // @GetMapping("/user/recipes/{userId}")//NEVEIKIA
     // public String getUserRecipes(@PathVariable Long id, Model model) {

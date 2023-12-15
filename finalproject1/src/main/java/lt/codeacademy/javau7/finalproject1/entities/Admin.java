@@ -1,7 +1,5 @@
 package lt.codeacademy.javau7.finalproject1.entities;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,8 +23,6 @@ public class Admin {
     private String username;
 
     private String role;
-
-    //private List<Recipe> recipes;
 
     public Admin() {
     }
@@ -78,13 +74,5 @@ public class Admin {
 	public void setRole(String role) {
 		this.role = role;
 	}
-
-	// public List<Recipe> getRecipes() {
-	// 	return recipes;
-	// }
-
-	// public void setRecipes(List<Recipe> recipes) {
-	// 	this.recipes = recipes;
-	// }
 	
 }

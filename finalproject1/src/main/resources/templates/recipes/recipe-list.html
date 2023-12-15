@@ -2,35 +2,43 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe List</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
 </head>
-<body>
-    <div class="container">
-        <h3>Recipes</h3>
-        recipe-list
-        <hr>
+<body class="container mt-5">
+    <h2>Recipe List (neveikia add,edit,delete)</h2>
 
-        <a th:href="@{/login}" class="btn btn-success btn-sm mb-3">Login</a>
-        <a th:href="@{/admin/dashboard}" class="btn btn-danger btn-sm mb-3">Dashboard (laikinai)</a>
+    <a th:href="@{/recipe/new}" class="btn btn-primary">Add new recipe</a>
+    <a th:href="@{/admin/dashboard}" class="btn btn-danger">Dashboard (laikinai)</a>
 
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
-                <tr>
-                    <th>Title</th>
-                    <th>Recipe page</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="tempRecipe : ${recipes}">
-                    <td th:text="${tempRecipe.title}" />
-                    <td>
-                        <a th:href="@{/recipe/{id}(id=${tempRecipe.id})}" class="btn btn-primary btn-sm">Recipe</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Recipe ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tempRecipe : ${recipes}">
+                <td th:text="${tempRecipe.id}"></td>
+                <td th:text="${tempRecipe.title}"></td>
+                <td th:text="${tempRecipe.description}"></td>
+                <td>
+                    <a th:href="@{/admin/user/recipe/edit/{recipeId}(recipeId=${tempRecipe.id})}" class="btn btn-primary">Edit</a>
+                    <a th:href="@{/admin/user/recipe/delete/{recipeId}(recipeId=${tempRecipe.id})}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>

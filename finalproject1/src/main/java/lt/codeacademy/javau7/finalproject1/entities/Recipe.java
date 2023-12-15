@@ -12,35 +12,26 @@ public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long recipeId;
+    private int id;
 
     private String title;
 
     private String description;
 
-    private Long userId;
+    public Recipe(){}
 
-//     // @ManyToOne
-//     // @JdbcTypeCode(SqlTypes.JSON)
-//     // @JoinColumn(name = "user_id", nullable = false)
-//     // private User user;
-
-//     // @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
-//     // private Set<Ingredient> ingredients = new HashSet<>();
-
-    public Recipe() {}
-
-    public Recipe(String title, String description, User user) {
+    public Recipe(int id, String title, String description) {
+        this.id = id;
         this.title = title;
         this.description = description;
     }
 
-    public Long getRecipeId() {
-        return recipeId;
+    public int getId() {
+        return id;
     }
 
-    public void setRecipeId(Long recipeId) {
-        this.recipeId = recipeId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -57,14 +48,6 @@ public class Recipe {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
 }

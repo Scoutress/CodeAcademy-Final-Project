@@ -9,9 +9,6 @@ import lt.codeacademy.javau7.finalproject1.entities.Recipe;
 @Service
 public interface RecipeService {
 
-    void saveRecipe(Recipe recipe);
-
-    List<Recipe> getAllRecipes();
-
+    public List<Recipe> getAllRecipes();
     
 }
