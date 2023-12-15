@@ -2,9 +2,13 @@ package lt.codeacademy.javau7.finalproject1.controllers;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import lt.codeacademy.javau7.finalproject1.entities.Ingredient;
 import lt.codeacademy.javau7.finalproject1.entities.Recipe;
@@ -12,8 +16,6 @@ import lt.codeacademy.javau7.finalproject1.services.IngredientService;
 import lt.codeacademy.javau7.finalproject1.services.RecipeService;
 import lt.codeacademy.javau7.finalproject1.services.UserService;
 
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -89,4 +91,9 @@ public class AdminController {
         return "redirect:/admin/ingr/list";
     }
 
+    @GetMapping("/ingr/delete")
+    public String deleteIngredient(@RequestParam("ingredientId") int theId){
+        ingredientService.deleteIngredientById(theId);
+        return "redirect:/admin/ingr/list";    
+    }
 }

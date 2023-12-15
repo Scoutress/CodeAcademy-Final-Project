@@ -5,13 +5,11 @@ import jakarta.persistence.TypedQuery;
 import lt.codeacademy.javau7.finalproject1.entities.Role;
 import lt.codeacademy.javau7.finalproject1.services.RoleService;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-@Repository
+@Service
 public class RoleServiceImpl implements RoleService {
 
-	@Autowired
 	private EntityManager entityManager;
 
 	public RoleServiceImpl(EntityManager theEntityManager) {

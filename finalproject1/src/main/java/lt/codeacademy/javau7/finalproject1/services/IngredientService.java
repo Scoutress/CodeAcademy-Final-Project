@@ -1,15 +1,14 @@
 package lt.codeacademy.javau7.finalproject1.services;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import lt.codeacademy.javau7.finalproject1.entities.Ingredient;
 
-@Service
+import java.util.List;
+
 public interface IngredientService {
 
     List<Ingredient> getAllIngred();
 
     void addIngredient(Ingredient ingredient);
+
+    void deleteIngredientById(int theId);
 }

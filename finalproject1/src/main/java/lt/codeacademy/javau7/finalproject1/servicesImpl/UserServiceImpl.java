@@ -3,10 +3,7 @@ package lt.codeacademy.javau7.finalproject1.servicesImpl;
 import java.util.List;
 import java.util.Optional;
 
-// import org.springframework.security.core.userdetails.UserDetails;
-// import org.springframework.security.core.userdetails.UserDetailsService;
-// import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -16,7 +13,7 @@ import lt.codeacademy.javau7.finalproject1.entities.WebUser;
 import lt.codeacademy.javau7.finalproject1.repositories.UserRepository;
 import lt.codeacademy.javau7.finalproject1.services.UserService;
 
-@Repository
+@Service
 public class UserServiceImpl implements UserService {
 
 	private final UserRepository userRepository;
