@@ -29,4 +29,15 @@ public class IngredientServiceImpl implements IngredientService {
     public void deleteIngredientById(int theId) {
         ingredientRepository.deleteById(theId);
     }
+
+    @Override
+    public void saveIngredient(Ingredient ingredient) {
+        ingredientRepository.save(ingredient);
+    }
+
+    @Override
+    public Ingredient findById(int theId) {
+        return ingredientRepository.findById(theId).orElse(null);
+    }
+
 }

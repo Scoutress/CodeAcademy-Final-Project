@@ -96,4 +96,17 @@ public class AdminController {
         ingredientService.deleteIngredientById(theId);
         return "redirect:/admin/ingr/list";    
     }
+
+    @GetMapping("/ingr/showEditForm")
+    public String showIngrEditForm(@RequestParam("ingredientId") int theId, Model theModel){
+        Ingredient theIngredient = ingredientService.findById(theId);
+        theModel.addAttribute("ingredient", theIngredient);
+        return "ingredients/ingredient-edit";
+    }
+
+    @PostMapping("/ingr/save")
+    public String saveIngredient(@ModelAttribute Ingredient ingredient) {
+        ingredientService.saveIngredient(ingredient);
+        return "redirect:/admin/ingr/list";
+    }
 }

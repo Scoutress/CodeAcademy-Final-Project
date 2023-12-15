@@ -11,4 +11,8 @@ public interface IngredientService {
     void addIngredient(Ingredient ingredient);
 
     void deleteIngredientById(int theId);
+
+    Ingredient findById(int theId);
+
+    void saveIngredient(Ingredient ingredient);
 }
