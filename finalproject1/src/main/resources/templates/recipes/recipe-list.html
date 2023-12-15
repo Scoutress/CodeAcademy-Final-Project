@@ -20,16 +20,18 @@
             <tr>
                 <th scope="col">Recipe ID</th>
                 <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Action</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="tempRecipe : ${recipes}">
                 <td th:text="${tempRecipe.id}"></td>
                 <td th:text="${tempRecipe.title}"></td>
-                <td th:text="${tempRecipe.description}"></td>
                 <td>
+                    <a th:href="@{/admin/recipe/details(recipeId=${tempRecipe.id})}" 
+                       class="btn btn-info btn-sm">
+                       Details
+                    </a>
                     <a th:href="@{/admin/recipe/showEditForm(recipeId=${tempRecipe.id})}"
                        class="btn btn-primary btn-sm">
                        Edit
