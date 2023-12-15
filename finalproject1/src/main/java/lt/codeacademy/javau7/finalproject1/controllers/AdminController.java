@@ -6,26 +6,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import lt.codeacademy.javau7.finalproject1.entities.Ingredient;
 import lt.codeacademy.javau7.finalproject1.entities.Recipe;
-import lt.codeacademy.javau7.finalproject1.entities.User;
+import lt.codeacademy.javau7.finalproject1.services.IngredientService;
 import lt.codeacademy.javau7.finalproject1.services.RecipeService;
 import lt.codeacademy.javau7.finalproject1.services.UserService;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-    private final UserService userService;
     private final RecipeService recipeService;
+    private final IngredientService ingredientService;
 
-    public AdminController(UserService userService, RecipeService recipeService) {
-        this.userService = userService;
+    public AdminController(UserService userService, RecipeService recipeService, IngredientService ingredientService) {
         this.recipeService = recipeService;
+        this.ingredientService = ingredientService;
     }
 
     @GetMapping("/dashboard")
@@ -33,39 +33,7 @@ public class AdminController {
         return "dashboard";
     }
 
-    @GetMapping("/users")
-    public String getAllUsers(Model model) {
-        List<User> userList = userService.getAllUsers();
-        model.addAttribute("users", userList);
-        return "users/user-list-admin";
-    }
-
-    @GetMapping("/user/edit/{id}")//NEVEIKIA
-    public String showEditUserForm(@PathVariable Long id, Model model) {
-        User user = userService.getUserById(id);
-        model.addAttribute("user", user);
-        return "users/user-edit";
-    }
-
-    @PostMapping("/user/edit/save/{id}")//NEVEIKIA
-    public String updateUser(@PathVariable Long id, @ModelAttribute User updatedUser) {
-        updatedUser.setId(id);
-        userService.updateUser(updatedUser);
-        return "redirect:/admin/users";
-    }
-
-    @GetMapping("/user/delete/{id}")
-    public String deleteUser(@PathVariable int id) {
-        userService.deleteById(id);
-        return "redirect:/admin/users";
-    }
-
-    @PostMapping("/user/delete/{id}")
-    public String deleteUserConfirmed(@PathVariable int id) {
-        return deleteUser(id);
-    }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
 //                                Receptai
 
     @GetMapping("/recipe/new")
@@ -96,6 +64,28 @@ public class AdminController {
     @PostMapping("/recipe/save")
     public String saveRecipe(@ModelAttribute Recipe recipe) {
         recipeService.saveRecipe(recipe);
+        return "redirect:/recipe/list";
+    }
+
+/////////////////////////////////////////////////////////////////////////////
+//                                Ingridientai
+
+    @GetMapping("/ingr/list")
+    public String getAllIngr(Model model) {
+        List<Ingredient> ingredients = ingredientService.getAllIngr();
+        model.addAttribute("ingredients", ingredients);
+        return "ingredients/ingredient-list";
+    }
+
+    @GetMapping("/ingr/new")//Nesutvarkyta
+    public String showIngredientForm(Model model) {
+        model.addAttribute("newRecipe", new Recipe());
+        return "recipes/recipe-add";
+    }
+
+    @PostMapping("/ingr/new")//Nesutvarkyta
+    public String addIngredient(@ModelAttribute("recipe") Recipe recipe) {
+        recipeService.addRecipe(recipe);
         return "redirect:/recipe/list";
     }
 }

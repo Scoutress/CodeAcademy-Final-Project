@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredient List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+</head>
+<body class="container mt-5">
+    <h2>Ingredient List (ingredient-list)</h2>
+    
+    <a th:href="@{/admin/ingr/new}" class="btn btn-primary">Add new ingredient</a>
+    <a th:href="@{/admin/dashboard}" class="btn btn-danger">Dashboard (laikinai)</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Ingredient ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price For One Gram</th>
+                <th scope="col">Price For One Mililitre</th>
+                <th scope="col">Price For One Tablespoon</th>
+                <th scope="col">Price For One Teaspoon</th>
+                <th scope="col">Price For One Unit</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tempIngredient : ${ingredients}">
+                <td th:text="${tempIngredient.id}"></td>
+                <td th:text="${tempIngredient.name}"></td>
+                <td th:text="${tempIngredient.priceForOneGram}"></td>
+                <td th:text="${tempIngredient.priceForOneMililitre}"></td>
+                <td th:text="${tempIngredient.priceForOneTablespoon}"></td>
+                <td th:text="${tempIngredient.priceForOneTeaspoon}"></td>
+                <td th:text="${tempIngredient.priceForOneUnit}"></td>
+                <td>
+                    <a th:href="@{/admin/ingr/showEditForm(ingredientId=${tempIngredient.id})}"
+                       class="btn btn-primary btn-sm">
+                       Edit
+                    </a>
+                    <a th:href="@{/admin/ingr/delete(ingredientId=${tempIngredient.id})}"
+                       class="btn btn-danger btn-sm"
+                       onclick="if (!(confirm('Are you sure?'))) return false">
+                       Delete
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>
