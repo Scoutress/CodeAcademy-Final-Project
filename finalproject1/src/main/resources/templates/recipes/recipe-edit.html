@@ -18,7 +18,7 @@
         <form th:action="@{/admin/recipe/save}" th:object="${recipe}" method="post">
             <input type="hidden" th:field="*{id}">
             <input type="text" th:field="*{title}" class="form-control mb-4 w-75" placeholder="Title">
-            <input type="text" th:field="*{description}" class="form-control mb-4 w-75" placeholder="Description">
+            <textarea th:field="*{description}" class="form-control mb-4 w-75" placeholder="Description" rows="5"></textarea>
             <button type="submit" class="btn btn-info col-3">Save</button>
             <a th:href="@{/recipe/list}" class="btn btn-info col-3">All recipes</a>
         </form>        

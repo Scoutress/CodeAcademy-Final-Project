@@ -109,4 +109,12 @@ public class AdminController {
         ingredientService.saveIngredient(ingredient);
         return "redirect:/admin/ingr/list";
     }
+
+    @GetMapping("/recipe/details")
+    public String showRecipeDetails(@RequestParam("recipeId") int theId, Model theModel) {
+        Recipe theRecipe = recipeService.findById(theId);
+        theModel.addAttribute("recipe", theRecipe);
+        return "recipes/recipe-details";
+    }
+
 }
