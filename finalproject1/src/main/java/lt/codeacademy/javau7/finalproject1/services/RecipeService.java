@@ -12,5 +12,7 @@ public interface RecipeService {
     public List<Recipe> getAllRecipes();
 
     public void addRecipe(Recipe recipe);
+
+    public void deleteRecipeById(int id);
     
 }

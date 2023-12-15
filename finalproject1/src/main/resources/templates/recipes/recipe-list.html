@@ -30,8 +30,15 @@
                 <td th:text="${tempRecipe.title}"></td>
                 <td th:text="${tempRecipe.description}"></td>
                 <td>
-                    <a th:href="@{/admin/user/recipe/edit/{recipeId}(recipeId=${tempRecipe.id})}" class="btn btn-primary">Edit</a>
-                    <a th:href="@{/admin/user/recipe/delete/{recipeId}(recipeId=${tempRecipe.id})}" class="btn btn-danger">Delete</a>
+                    <a th:href="@{/admin/recipe/edit/{recipeId}(recipeId=${tempRecipe.id})}"
+                       class="btn btn-primary btn-sm">
+                       Edit
+                    </a>
+                    <a th:href="@{/admin/recipe/delete(recipeId=${tempRecipe.id})}"
+                       class="btn btn-danger btn-sm"
+                       onclick="if (!(confirm('Are you sure?'))) return false">
+                       Delete
+                    </a>
                 </td>
             </tr>
         </tbody>

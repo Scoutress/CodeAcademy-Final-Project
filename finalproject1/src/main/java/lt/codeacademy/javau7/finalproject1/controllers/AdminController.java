@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import lt.codeacademy.javau7.finalproject1.entities.Recipe;
 import lt.codeacademy.javau7.finalproject1.entities.User;
@@ -11,6 +12,7 @@ import lt.codeacademy.javau7.finalproject1.services.RecipeService;
 import lt.codeacademy.javau7.finalproject1.services.UserService;
 
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -79,6 +81,11 @@ public class AdminController {
         return "redirect:/recipe/list";
     }
 
+    @GetMapping("/recipe/delete")
+    public String deleteRecipe(@RequestParam("recipeId") int theId){
+        recipeService.deleteRecipeById(theId);
+        return "redirect:/recipe/list";    
+    }
 
 
 

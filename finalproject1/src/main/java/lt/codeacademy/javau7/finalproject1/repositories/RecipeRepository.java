@@ -7,4 +7,6 @@ import lt.codeacademy.javau7.finalproject1.entities.Recipe;
 
 @Repository
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
+
+    void deleteById(Long id);
 }
