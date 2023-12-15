@@ -10,5 +10,7 @@ import lt.codeacademy.javau7.finalproject1.entities.Recipe;
 public interface RecipeService {
 
     public List<Recipe> getAllRecipes();
+
+    public void addRecipe(Recipe recipe);
     
 }

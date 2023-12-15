@@ -26,4 +26,5 @@ public class RecipeController {
         model.addAttribute("recipes", recipes);
         return "recipes/recipe-list";
     }
+
 }
