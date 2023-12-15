@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Add recipe</title>
+    <title>Edit Recipe</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
@@ -11,15 +11,16 @@
 </head>
 <body>
     <div class="container">
-        <h3>Recipes</h3>
-        recipe-edit
+        <h3>Edit Recipe (recipe-edit)</h3>
+        
         <hr>
-        <p class="h4 mb-4">Create new recipe</p>
-        <form action="#" th:action="@{/user/recipe/save}" th:object="${recipe}" method="post">
-            <input type="text" th:field="*{title}" class="form-control mb-3 w-75" placeholder="Title">
-            <input type="text" th:field="*{description}" class="form-control mb-3 w-75" placeholder="Description">
-            <button type="submit" class="btn btn-info col-2">Save</button>
-            <a th:href="@{/recipes}" class="btn btn-info col-3">All recipes</a>
+        <p class="h4 mb-4">Edit recipe</p>
+        <form th:action="@{/admin/recipe/save}" th:object="${recipe}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <input type="text" th:field="*{title}" class="form-control mb-4 w-75" placeholder="Title">
+            <input type="text" th:field="*{description}" class="form-control mb-4 w-75" placeholder="Description">
+            <button type="submit" class="btn btn-info col-3">Save</button>
+            <a th:href="@{/recipe/list}" class="btn btn-info col-3">All recipes</a>
         </form>        
     </div>
 </body>

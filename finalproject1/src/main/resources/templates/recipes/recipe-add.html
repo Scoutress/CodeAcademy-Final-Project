@@ -10,7 +10,8 @@
           crossorigin="anonymous">
 </head>
 <body class="container mt-5">
-    <h2>Create Recipe</h2>
+    <h2>Create Recipe (recipe-add)</h2>
+    
     <form th:action="@{/admin/recipe/new}" th:object="${newRecipe}" method="post">
         <div class="mb-3">
             <label for="title" class="form-label">Title:</label>

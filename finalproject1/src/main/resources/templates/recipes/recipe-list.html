@@ -10,8 +10,8 @@
           crossorigin="anonymous">
 </head>
 <body class="container mt-5">
-    <h2>Recipe List (neveikia add,edit,delete)</h2>
-
+    <h2>Recipe List (recipe-list)</h2>
+    
     <a th:href="@{/admin/recipe/new}" class="btn btn-primary">Add new recipe</a>
     <a th:href="@{/admin/dashboard}" class="btn btn-danger">Dashboard (laikinai)</a>
 
@@ -30,7 +30,7 @@
                 <td th:text="${tempRecipe.title}"></td>
                 <td th:text="${tempRecipe.description}"></td>
                 <td>
-                    <a th:href="@{/admin/recipe/edit/{recipeId}(recipeId=${tempRecipe.id})}"
+                    <a th:href="@{/admin/recipe/showEditForm(recipeId=${tempRecipe.id})}"
                        class="btn btn-primary btn-sm">
                        Edit
                     </a>

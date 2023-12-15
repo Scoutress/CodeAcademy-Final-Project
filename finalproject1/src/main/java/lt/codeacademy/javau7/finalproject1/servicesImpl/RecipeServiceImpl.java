@@ -1,6 +1,7 @@
 package lt.codeacademy.javau7.finalproject1.servicesImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,18 @@ public class RecipeServiceImpl implements RecipeService{
     public void deleteRecipeById(int id) {
         recipeRepository.deleteById(id);
     }
+
+    @Override
+    public Recipe findById(int theId) {
+        Optional<Recipe> recipeOptional = recipeRepository.findById(theId);
+        return recipeOptional.orElse(null);
+    }
+
+    @Override
+    public void saveRecipe(Recipe recipe) {
+        recipeRepository.save(recipe);
+    }
+
 
 
     

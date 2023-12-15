@@ -12,7 +12,6 @@ import lt.codeacademy.javau7.finalproject1.services.RecipeService;
 import lt.codeacademy.javau7.finalproject1.services.UserService;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -87,9 +86,16 @@ public class AdminController {
         return "redirect:/recipe/list";    
     }
 
+    @GetMapping("/recipe/showEditForm")
+    public String showEditForm(@RequestParam("recipeId") int theId, Model theModel){
+        Recipe theRecipe = recipeService.findById(theId);
+        theModel.addAttribute("recipe", theRecipe);
+        return "recipes/recipe-edit";
+    }
 
-
-
-
-
+    @PostMapping("/recipe/save")
+    public String saveRecipe(@ModelAttribute Recipe recipe) {
+        recipeService.saveRecipe(recipe);
+        return "redirect:/recipe/list";
+    }
 }
