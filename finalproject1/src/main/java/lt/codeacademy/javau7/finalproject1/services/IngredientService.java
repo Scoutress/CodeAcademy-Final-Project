@@ -10,4 +10,6 @@ import lt.codeacademy.javau7.finalproject1.entities.Ingredient;
 public interface IngredientService {
 
     List<Ingredient> getAllIngred();
+
+    void addIngredient(Ingredient ingredient);
 }

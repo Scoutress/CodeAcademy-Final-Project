@@ -77,15 +77,16 @@ public class AdminController {
         return "ingredients/ingredient-list";
     }
 
-    @GetMapping("/ingr/new")//Nesutvarkyta
+    @GetMapping("/ingr/new")
     public String showIngredientForm(Model model) {
-        model.addAttribute("newRecipe", new Recipe());
-        return "recipes/recipe-add";
+        model.addAttribute("newIngredient", new Ingredient());
+        return "ingredients/ingredient-add";
     }
 
-    @PostMapping("/ingr/new")//Nesutvarkyta
-    public String addIngredient(@ModelAttribute("recipe") Recipe recipe) {
-        recipeService.addRecipe(recipe);
-        return "redirect:/recipe/list";
+    @PostMapping("/ingr/new")
+    public String addIngredient(@ModelAttribute("newIngredient") Ingredient ingredient) {
+        ingredientService.addIngredient(ingredient);
+        return "redirect:/admin/ingr/list";
     }
+
 }
