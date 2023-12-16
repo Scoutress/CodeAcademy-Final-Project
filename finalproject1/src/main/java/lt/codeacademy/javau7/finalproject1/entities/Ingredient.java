@@ -15,28 +15,18 @@ public class Ingredient {
     private int id;
 
     private String name;
-
-    private Double priceForOneGram;
-
-    private Double priceForOneMililitre;
-
-    private Double priceForOneTablespoon;
-
-    private Double priceForOneTeaspoon;
-
-    private Double priceForOneUnit;
+    
+    private Double price;
+    
+    private String unit;
 
     public Ingredient(){}
 
-    public Ingredient(int id, String name, Double priceForOneGram, Double priceForOneMililitre,
-        Double priceForOneTablespoon, Double priceForOneTeaspoon, Double priceForOneUnit) {
+    public Ingredient(int id, String name, Double price, String unit) {
         this.id = id;
         this.name = name;
-        this.priceForOneGram = priceForOneGram;
-        this.priceForOneMililitre = priceForOneMililitre;
-        this.priceForOneTablespoon = priceForOneTablespoon;
-        this.priceForOneTeaspoon = priceForOneTeaspoon;
-        this.priceForOneUnit = priceForOneUnit;
+        this.price = price;
+        this.unit = unit;
     }
 
     public int getId() {
@@ -55,43 +45,19 @@ public class Ingredient {
         this.name = name;
     }
 
-    public Double getPriceForOneGram() {
-        return priceForOneGram;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setPriceForOneGram(Double priceForOneGram) {
-        this.priceForOneGram = priceForOneGram;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
-    public Double getPriceForOneMililitre() {
-        return priceForOneMililitre;
+    public String getUnit() {
+        return unit;
     }
 
-    public void setPriceForOneMililitre(Double priceForOneMililitre) {
-        this.priceForOneMililitre = priceForOneMililitre;
-    }
-
-    public Double getPriceForOneTablespoon() {
-        return priceForOneTablespoon;
-    }
-
-    public void setPriceForOneTablespoon(Double priceForOneTablespoon) {
-        this.priceForOneTablespoon = priceForOneTablespoon;
-    }
-
-    public Double getPriceForOneTeaspoon() {
-        return priceForOneTeaspoon;
-    }
-
-    public void setPriceForOneTeaspoon(Double priceForOneTeaspoon) {
-        this.priceForOneTeaspoon = priceForOneTeaspoon;
-    }
-
-    public Double getPriceForOneUnit() {
-        return priceForOneUnit;
-    }
-
-    public void setPriceForOneUnit(Double priceForOneUnit) {
-        this.priceForOneUnit = priceForOneUnit;
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 }

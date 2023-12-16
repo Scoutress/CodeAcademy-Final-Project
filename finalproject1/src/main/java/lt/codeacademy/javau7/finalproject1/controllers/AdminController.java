@@ -79,15 +79,15 @@ public class AdminController {
         return "ingredients/ingredient-list";
     }
 
-    @GetMapping("/ingr/new")
+    @GetMapping("/new")
     public String showIngredientForm(Model model) {
-        model.addAttribute("newIngredient", new Ingredient());
-        return "ingredients/ingredient-add";
+        model.addAttribute("ingredient", new Ingredient());
+        return "ingredient-form";
     }
 
-    @PostMapping("/ingr/new")
-    public String addIngredient(@ModelAttribute("newIngredient") Ingredient ingredient) {
-        ingredientService.addIngredient(ingredient);
+    @PostMapping("/new")
+    public String addIngredient(@ModelAttribute("ingredient") Ingredient ingredient) {
+        ingredientService.saveIngredient(ingredient);
         return "redirect:/admin/ingr/list";
     }
 

@@ -20,11 +20,8 @@
             <tr>
                 <th scope="col">Ingredient ID</th>
                 <th scope="col">Name</th>
-                <th scope="col">Price For One Gram</th>
-                <th scope="col">Price For One Mililitre</th>
-                <th scope="col">Price For One Tablespoon</th>
-                <th scope="col">Price For One Teaspoon</th>
-                <th scope="col">Price For One Unit</th>
+                <th scope="col">Price</th>
+                <th scope="col">Unit</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -32,11 +29,8 @@
             <tr th:each="tempIngredient : ${ingredients}">
                 <td th:text="${tempIngredient.id}"></td>
                 <td th:text="${tempIngredient.name}"></td>
-                <td th:text="${tempIngredient.priceForOneGram}"></td>
-                <td th:text="${tempIngredient.priceForOneMililitre}"></td>
-                <td th:text="${tempIngredient.priceForOneTablespoon}"></td>
-                <td th:text="${tempIngredient.priceForOneTeaspoon}"></td>
-                <td th:text="${tempIngredient.priceForOneUnit}"></td>
+                <td th:text="${tempIngredient.price}"></td>
+                <td th:text="${tempIngredient.unit}"></td>
                 <td>
                     <a th:href="@{/admin/ingr/showEditForm(ingredientId=${tempIngredient.id})}"
                        class="btn btn-primary btn-sm">
