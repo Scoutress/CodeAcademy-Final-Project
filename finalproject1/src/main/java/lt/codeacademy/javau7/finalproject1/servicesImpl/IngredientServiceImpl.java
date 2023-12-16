@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import lt.codeacademy.javau7.finalproject1.entities.Ingredient;
 import lt.codeacademy.javau7.finalproject1.repositories.IngredientRepository;
@@ -39,5 +40,12 @@ public class IngredientServiceImpl implements IngredientService {
     public Ingredient findById(int theId) {
         return ingredientRepository.findById(theId).orElse(null);
     }
+
+    @Override
+    public Ingredient getIngredientById(Integer ingredientId) {
+        Optional<Ingredient> optionalIngredient = ingredientRepository.findById(ingredientId);
+        return optionalIngredient.orElse(null);
+    }
+
 
 }

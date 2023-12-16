@@ -22,6 +22,29 @@
             <textarea class="form-control" id="description" th:field="*{description}"></textarea>
         </div>
 
+        <!-- 
+        <h3>Ingredients</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Ingredient</th>
+                    <th scope="col">Unit</th>
+                    <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="tempIngredient, rowStat : ${ingredients}">
+                    <td th:text="${tempIngredient.name}"></td>
+                    <td th:text="${tempIngredient.unit}"></td>
+                    <td>
+                        <input type="number" name="quantities" />
+                        <input type="hidden" name="ingredientIds" th:value="${tempIngredient.id}" />
+                    </td>
+                </tr>                
+            </tbody>
+        </table>
+         -->
+
         <button type="submit" class="btn btn-primary">Create Recipe</button>
     </form>
 

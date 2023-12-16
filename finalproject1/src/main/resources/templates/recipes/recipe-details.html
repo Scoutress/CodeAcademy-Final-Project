@@ -25,9 +25,28 @@
         <pre class="break-line"><span th:text="${recipe.title}"></span></pre>
         <p><strong>Description:</strong></p>
         <pre class="break-line"><span th:text="${recipe.description}"></span></pre>
+        
+        <!-- 
+        <h3>Ingredients</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Ingredient</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="recipeIngredient : ${recipe.recipeIngredients}">
+                    <td th:text="${recipeIngredient.ingredient.name}"></td>
+                    <td th:text="${recipeIngredient.quantity}"></td>
+                    <td th:text="${recipeIngredient.ingredient.unit}"></td>
+                </tr>
+            </tbody>
+        </table>
+        -->
     </div>
     
-   
     <a th:href="@{/recipe/list}" class="btn btn-info">Back to Recipe List</a>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

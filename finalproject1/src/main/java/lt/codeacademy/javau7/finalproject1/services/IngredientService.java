@@ -15,4 +15,6 @@ public interface IngredientService {
     Ingredient findById(int theId);
 
     void saveIngredient(Ingredient ingredient);
+
+    Ingredient getIngredientById(Integer ingredientId);
 }
