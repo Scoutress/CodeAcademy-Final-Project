@@ -2,8 +2,6 @@ package lt.codeacademy.javau7.finalproject1.controllers;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -79,13 +77,13 @@ public class AdminController {
         return "ingredients/ingredient-list";
     }
 
-    @GetMapping("/new")
+    @GetMapping("/ingr/new")
     public String showIngredientForm(Model model) {
-        model.addAttribute("ingredient", new Ingredient());
-        return "ingredient-form";
+        model.addAttribute("newIngredient", new Ingredient());
+        return "ingredients/ingredient-add";
     }
 
-    @PostMapping("/new")
+    @PostMapping("/ingr/new")
     public String addIngredient(@ModelAttribute("ingredient") Ingredient ingredient) {
         ingredientService.saveIngredient(ingredient);
         return "redirect:/admin/ingr/list";

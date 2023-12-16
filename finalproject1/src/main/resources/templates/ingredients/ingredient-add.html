@@ -12,35 +12,29 @@
 <body class="container mt-5">
     <h2>Add new ingredient</h2>
     
-    <form th:action="@{/admin/ingr/new}" th:object="${newIngredient}" method="post">
+    <form th:action="@{/admin/ingr/new}" th:object="${newIngredient}" method="post" onsubmit="return validateForm()">
         <div class="mb-3">
             <label for="name" class="form-label">Name:</label>
             <input type="text" class="form-control" id="name" th:field="*{name}" />
         </div>
         <div class="mb-3">
-            <label for="priceForOneGram" class="form-label">Price For One Gram:</label>
-            <input type="text" class="form-control" id="priceForOneGram" th:field="${newIngredient.priceForOneGram}" />
+            <label for="price" class="form-label">Price:</label>
+            <input type="text" class="form-control" id="price" th:field="${newIngredient.price}" />
+            <small class="text-danger" id="priceError"></small>
         </div>
         <div class="mb-3">
-            <label for="priceForOneMililitre" class="form-label">Price For One Mililitre:</label>
-            <input type="text" class="form-control" id="priceForOneMililitre" th:field="${newIngredient.priceForOneMililitre}" />
-        </div>
-        <div class="mb-3">
-            <label for="priceForOneTablespoon" class="form-label">Price For One Tablespoon:</label>
-            <input type="text" class="form-control" id="priceForOneTablespoon" th:field="${newIngredient.priceForOneTablespoon}" />
-        </div>
-        <div class="mb-3">
-            <label for="priceForOneTeaspoon" class="form-label">Price For One Teaspoon:</label>
-            <input type="text" class="form-control" id="priceForOneTeaspoon" th:field="${newIngredient.priceForOneTeaspoon}" />
-        </div>
-        <div class="mb-3">
-            <label for="priceForOneUnit" class="form-label">Price For One Unit:</label>
-            <input type="text" class="form-control" id="priceForOneUnit" th:field="${newIngredient.priceForOneUnit}" />
+            <label for="unit" class="form-label">Unit:</label>
+            <select class="form-control" id="unit" th:field="${newIngredient.unit}">
+                <option value="gram">Gram</option>
+                <option value="mililiter">Mililiter</option>
+                <option value="tablespoon">Tablespoon</option>
+                <option value="teaspoon">Teaspoon</option>
+                <option value="unit">Unit</option>
+            </select>
         </div>
         
         <button type="submit" class="btn btn-primary">Add Ingredient</button>
     </form>
-    
 
     <br>
     <p><a th:href="@{/admin/ingr/list}" class="btn btn-info">Back to Ingredient List</a></p>
@@ -49,5 +43,26 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.2/js/bootstrap.min.js"></script>
+    
+    <script>
+        function validateForm() {
+            var priceInput = document.getElementById("price");
+            var priceError = document.getElementById("priceError");
+            
+            if (priceInput.value.includes(',')) {
+                priceError.textContent = "Please use '.' instead of ',' for decimal separator.";
+                return false;
+            }
+            
+            var priceValue = parseFloat(priceInput.value);
+            if (isNaN(priceValue)) {
+                priceError.textContent = "Please enter a valid number for the price.";
+                return false;
+            } else {
+                priceError.textContent = "";
+                return true;
+            }
+        }
+    </script>
 </body>
 </html>
