@@ -1,10 +1,12 @@
 package lt.codeacademy.javau7.finalproject1.controllers;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -67,6 +69,13 @@ public class AdminController {
         return "redirect:/recipe/list";
     }
 
+    @GetMapping("/recipe/details")
+    public String showRecipeDetails(@RequestParam("recipeId") int theId, Model theModel) {
+        Recipe theRecipe = recipeService.findById(theId);
+        theModel.addAttribute("recipe", theRecipe);
+        return "recipes/recipe-details";
+    }
+
 /////////////////////////////////////////////////////////////////////////////
 //                                Ingridientai
 
@@ -96,23 +105,19 @@ public class AdminController {
     }
 
     @GetMapping("/ingr/showEditForm")
-    public String showIngrEditForm(@RequestParam("ingredientId") int theId, Model theModel){
+    public String showIngrEditForm(@RequestParam("ingredientId") int theId, Model theModel) {
         Ingredient theIngredient = ingredientService.findById(theId);
         theModel.addAttribute("ingredient", theIngredient);
         return "ingredients/ingredient-edit";
     }
 
     @PostMapping("/ingr/save")
-    public String saveIngredient(@ModelAttribute Ingredient ingredient) {
+    public String saveIngredient(@ModelAttribute Ingredient ingredient, RedirectAttributes redirectAttributes) {
         ingredientService.saveIngredient(ingredient);
+        redirectAttributes.addAttribute("ingredientId", ingredient.getId());
         return "redirect:/admin/ingr/list";
     }
 
-    @GetMapping("/recipe/details")
-    public String showRecipeDetails(@RequestParam("recipeId") int theId, Model theModel) {
-        Recipe theRecipe = recipeService.findById(theId);
-        theModel.addAttribute("recipe", theRecipe);
-        return "recipes/recipe-details";
-    }
+
 
 }

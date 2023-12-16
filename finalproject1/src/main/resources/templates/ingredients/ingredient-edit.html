@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="lt" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,10 +8,24 @@
           rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous">
+    <script th:src="@{/path/to/jquery.min.js}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#price').on('input', function() {
+                var input = $(this);
+                var regex = /^[0-9]+(\.[0-9]*)?$/;
+                var isNumber = regex.test(input.val());
+                if (!isNumber) {
+                    alert('Įveskite tik skaičius ir tašką');
+                    input.val('');
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="container">
-        <h3>Edit Ingredient (ingredient-edit)</h3>
+        <h3>Edit Ingredient</h3>
         
         <hr>
         <p class="h4 mb-4">Edit ingredient</p>
@@ -19,37 +33,28 @@
             <input type="hidden" th:field="*{id}">
             
             <div class="mb-4 w-75">
-                <label for="name">Name:</label>
+                <label for="name">Pavadinimas:</label>
                 <input type="text" th:field="*{name}" class="form-control">
             </div>
             
             <div class="mb-4 w-75">
-                <label for="priceForOneGram">Price For One Gram:</label>
-                <input type="text" th:field="*{priceForOneGram}" class="form-control">
+                <label for="price">Kaina:</label>
+                <input type="text" th:field="*{price}" class="form-control" id="price" pattern="^[0-9]+(\.[0-9]*)?$">
             </div>
             
             <div class="mb-4 w-75">
-                <label for="priceForOneMililitre">Price For One Mililitre:</label>
-                <input type="text" th:field="*{priceForOneMililitre}" class="form-control">
+                <label for="unit">Matavimo vienetas:</label>
+                <select th:field="*{unit}" class="form-control">
+                    <option value="gramas">Gramas</option>
+                    <option value="mililitras">Mililitras</option>
+                    <option value="šaukštas">Šaukštas</option>
+                    <option value="šaukštelis">Šaukštelis</option>
+                    <option value="vienetas">Vienetas</option>
+                </select>
             </div>
             
-            <div class="mb-4 w-75">
-                <label for="priceForOneTablespoon">Price For One Tablespoon:</label>
-                <input type="text" th:field="*{priceForOneTablespoon}" class="form-control">
-            </div>
-            
-            <div class="mb-4 w-75">
-                <label for="priceForOneTeaspoon">Price For One Teaspoon:</label>
-                <input type="text" th:field="*{priceForOneTeaspoon}" class="form-control">
-            </div>
-            
-            <div class="mb-4 w-75">
-                <label for="priceForOneUnit">Price For One Unit:</label>
-                <input type="text" th:field="*{priceForOneUnit}" class="form-control">
-            </div>
-            
-            <button type="submit" class="btn btn-info col-3">Save</button>
-            <a th:href="@{/admin/ingr/list}" class="btn btn-info col-3">All ingredients</a>
+            <button type="submit" class="btn btn-info col-3">Išsaugoti</button>
+            <a th:href="@{/admin/ingr/list}" class="btn btn-info col-3">Visi ingredientai</a>
         </form>        
     </div>
 </body>
