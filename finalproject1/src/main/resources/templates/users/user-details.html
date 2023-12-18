@@ -2,13 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>User Details</title>
+    <title th:text="#{user.details.title}">User Details</title>
 </head>
-<body>
-    <h2>User Details</h2>
-    user-details
-    <p th:text="${user.firstName} + ' ' + ${user.lastName}"></p>
-    <p th:text="${user.username}"></p>
-    <p th:text="${user.email}"></p>
+<body th:lang="${#locale.language}" class="container mt-5">
+    <h2 th:text="#{user.details.title}">User Details</h2>
+    
+    <p th:text="#{user.details.fullName(${user.firstName}, ${user.lastName})}"></p>
+    <p>
+        <span th:text="#{user.details.username}">Username:</span>
+        <span th:text="${user.username}"></span>
+    </p>
+    <p>
+        <span th:text="#{user.details.email}">Email:</span>
+        <span th:text="${user.email}"></span>
+    </p>
 </body>
 </html>

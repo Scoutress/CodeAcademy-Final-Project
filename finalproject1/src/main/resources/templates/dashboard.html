@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lt" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Dashboard</title>
+    <title th:text="#{dashboard.title}">Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body class="bg-light">
 
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Welcome to the Dashboard</h1>
+        <h1 class="text-center mb-4" th:text="#{dashboard.title}">Welcome to the Dashboard</h1>
 
         <div class="row">
             <div class="col-md-4 offset-md-4">
                 <div class="list-group">
-                    <a href="/" class="list-group-item list-group-item-action">First page</a>
-                    <a href="/admin/users" class="list-group-item list-group-item-action">User List</a>
-                    <a href="/recipe/list" class="list-group-item list-group-item-action">Recipes List</a>
-                    <a href="/admin/ingr/list" class="list-group-item list-group-item-action">Ingredients List</a>
+                    <a href="/" class="list-group-item list-group-item-action" th:text="#{dashboard.firstPage}">First page</a>
+                    <a href="/admin/users" class="list-group-item list-group-item-action" th:text="#{dashboard.userList}">User List</a>
+                    <a href="/recipe/list" class="list-group-item list-group-item-action" th:text="#{dashboard.recipesList}">Recipes List</a>
+                    <a href="/admin/ingr/list" class="list-group-item list-group-item-action" th:text="#{dashboard.ingredientsList}">Ingredients List</a>
                 </div>
             </div>
         </div>
@@ -26,5 +26,24 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+    <span th:text="#{lang.change}"></span>:
+    <select id="locales">
+        <option value=""></option>
+        <option value="en" th:text="#{lang.eng}"></option>
+        <option value="lt" th:text="#{lang.lt}"></option>
+    </select>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#locales").change(function () {
+            var selectedOption = $('#locales').val();
+            if (selectedOption != ''){
+                window.location.replace('dashboard?lang=' + selectedOption);
+            }
+        });
+    });
+    </script>
 </body>
 </html>

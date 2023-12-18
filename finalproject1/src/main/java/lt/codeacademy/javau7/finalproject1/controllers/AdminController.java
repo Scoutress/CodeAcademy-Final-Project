@@ -13,7 +13,6 @@ import lt.codeacademy.javau7.finalproject1.entities.Ingredient;
 import lt.codeacademy.javau7.finalproject1.entities.Recipe;
 import lt.codeacademy.javau7.finalproject1.services.IngredientService;
 import lt.codeacademy.javau7.finalproject1.services.RecipeService;
-import lt.codeacademy.javau7.finalproject1.services.UserService;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +23,7 @@ public class AdminController {
     private final RecipeService recipeService;
     private final IngredientService ingredientService;
 
-    public AdminController(UserService userService, RecipeService recipeService, IngredientService ingredientService) {
+    public AdminController(RecipeService recipeService, IngredientService ingredientService) {
         this.recipeService = recipeService;
         this.ingredientService = ingredientService;
     }
