@@ -27,13 +27,13 @@
         <pre class="break-line"><span th:text="${recipe.description}"></span></pre>
         
         <!-- 
-        <h3 th:text="#{recipeDetails.ingredients}">Ingredients</h3>
+        <h3>Ingredients</h3>
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col" th:text="#{recipeDetails.ingredient}">Ingredient</th>
-                    <th scope="col" th:text="#{recipeDetails.quantity}">Quantity</th>
-                    <th scope="col" th:text="#{recipeDetails.unit}">Unit</th>
+                    <th scope="col">Ingredient</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,7 +47,8 @@
         -->
     </div>
     
-    <a th:href="@{/recipe/list}" class="btn btn-info" th:text="#{recipeDetails.backToRecipeList}">Back to Recipe List</a>
+   
+    <a th:href="@{/recipe/list}" class="btn btn-info">Back to Recipe List</a>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
