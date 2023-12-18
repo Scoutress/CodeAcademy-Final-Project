@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="lt" xmlns:th="http://www.thymeleaf.org">
+<html lang="lt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title th:text="#{ingredient.editTitle}">Edit Ingredient</title>
+    <title>Atnaujinti ingridientą</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous">
-    <script th:src="@{/path/to/jquery.min.js}"></script>
+    <script src="/path/to/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#price').on('input', function() {
@@ -16,7 +16,7 @@
                 var regex = /^[0-9]+(\.[0-9]*)?$/;
                 var isNumber = regex.test(input.val());
                 if (!isNumber) {
-                    alert("#{ingredient.enterValidNumber}");
+                    alert('Enter a valid number');
                     input.val('');
                 }
             });
@@ -25,36 +25,36 @@
 </head>
 <body>
     <div class="container">
-        <h3 th:text="#{ingredient.editHeader}">Edit Ingredient</h3>
+        <h3>Atnaujinti ingridientą</h3>
         
         <hr>
-        <p class="h4 mb-4" th:text="#{ingredient.editSubtitle}">Edit ingredient</p>
-        <form th:action="@{/admin/ingr/save}" th:object="${ingredient}" method="post">
+        <p class="h4 mb-4">Edit ingredient</p>
+        <form action="/admin/ingr/save" th:object="${ingredient}" th:action="@{/admin/ingr/save}" method="post">
             <input type="hidden" th:field="*{id}">
             
             <div class="mb-4 w-75">
-                <label for="name" th:text="#{ingredient.nameLabel}">Pavadinimas:</label>
+                <label for="name">Pavadinimas:</label>
                 <input type="text" th:field="*{name}" class="form-control">
             </div>
             
             <div class="mb-4 w-75">
-                <label for="price" th:text="#{ingredient.priceLabel}">Kaina:</label>
+                <label for="price">Kaina:</label>
                 <input type="text" th:field="*{price}" class="form-control" id="price" pattern="^[0-9]+(\.[0-9]*)?$">
             </div>
             
             <div class="mb-4 w-75">
-                <label for="unit" th:text="#{ingredient.unitLabel}">Matavimo vienetas:</label>
+                <label for="unit">Matavimo vienetas:</label>
                 <select th:field="*{unit}" class="form-control">
-                    <option value="gramas" th:text="#{ingredient.gram}">Gramas</option>
-                    <option value="mililitras" th:text="#{ingredient.mililiter}">Mililitras</option>
-                    <option value="šaukštas" th:text="#{ingredient.tablespoon}">Šaukštas</option>
-                    <option value="šaukštelis" th:text="#{ingredient.teaspoon}">Šaukštelis</option>
-                    <option value="vienetas" th:text="#{ingredient.unitOption}">Vienetas</option>
+                    <option value="gram">Gramas</option>
+                    <option value="mililiter">Mililitras</option>
+                    <option value="tablespoon">Šaukštas</option>
+                    <option value="teaspoon">Šaukštelis</option>
+                    <option value="unit">Vienetas</option>
                 </select>
             </div>
             
-            <button type="submit" class="btn btn-info col-3" th:text="#{ingredient.saveButton}">Išsaugoti</button>
-            <a th:href="@{/admin/ingr/list}" class="btn btn-info col-3" th:text="#{ingredient.allIngredientsButton}">Visi ingredientai</a>
+            <button type="submit" class="btn btn-info col-3">Išsaugoti</button>
+            <a href="/admin/ingr/list" class="btn btn-info col-3">Visi ingredientai</a>
         </form>        
     </div>
 </body>

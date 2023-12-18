@@ -1,7 +1,6 @@
 package lt.codeacademy.javau7.finalproject1.entities;
 
 import java.util.List;
-import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

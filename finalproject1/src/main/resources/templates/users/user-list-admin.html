@@ -1,37 +1,35 @@
-<!-- users/user-list-admin.html -->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="lt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="#{user.list.title}">Users</title>
+    <title>Vartotojai</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous">
 </head>
-<body th:lang="${#locale.language}">
+<body>
     <div class="container mt-5">
-        <h2 th:text="#{user.list.heading}">Users (Neveikia user edit)</h2>
-        user-list-admin
+        <h2>Vartotojai</h2>
         <div class="mb-3">
-            <a th:href="@{'/register'}" class="btn btn-success" th:text="#{user.list.register}">Register</a>
+            <a href="/register" class="btn btn-success">Registruotis</a>
         </div>
         <div class="mb-3">
-            <a th:href="@{/admin/dashboard}" class="btn btn-danger btn-sm mb-3" th:text="#{user.list.dashboard}">Dashboard (laikinai)</a>
+            <a href="/admin/dashboard" class="btn btn-danger btn-sm mb-3">Valdymo skydas</a>
         </div>
         
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th th:text="#{user.list.userId}">User Id</th>
-                    <th th:text="#{user.list.firstName}">First name</th>
-                    <th th:text="#{user.list.lastName}">Last name</th>
-                    <th th:text="#{user.list.email}">Email</th>
-                    <th th:text="#{user.list.username}">Username</th>
-                    <th th:text="#{user.list.role}">Role</th>
-                    <th th:text="#{user.list.recipes}">Recipes</th>
-                    <th th:text="#{user.list.actions}">Actions</th>
+                    <th>Vartotojo Id</th>
+                    <th>Vardas</th>
+                    <th>Pavardė</th>
+                    <th>El.paštas</th>
+                    <th>Slapyvardis</th>
+                    <th>Rolė</th>
+                    <th>Receptai</th>
+                    <th>Veiksmai</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,20 +43,10 @@
                         <td th:text="${user.role}"></td>
                         <td th:text="${user.recipeCount}"></td>
                         <td>
-                            <a  th:href="@{'/admin/user/recipes/' + ${user.id}}"
-                                class="btn btn-info btn-sm" th:text="#{user.list.viewRecipes}">
-                                Recipes
-                            </a>
-                            <a  th:href="@{'/admin/user/edit/' + ${user.id}}" 
-                                class="btn btn-primary btn-sm" th:text="#{user.list.edit}">
-                                Edit
-                            </a>
-                            <a th:href="@{'/admin/user/delete/' + ${user.id}}"
-                                class="btn btn-danger btn-sm" 
-                                th:attr="onclick=${'if (!(confirm(\'' + ${#messages.msg('user.list.confirmDelete')} + '\'))) return false'}"
-                                th:text="#{user.list.delete}">
-                                Delete
-                            </a>
+                            <a href="/admin/user/recipes/${user.id}" class="btn btn-info btn-sm">Receptai</a>
+                            <a href="/admin/user/edit/${user.id}" class="btn btn-primary btn-sm">Pakeisti</a>
+                            <a href="/admin/user/delete/${user.id}" class="btn btn-danger btn-sm" 
+                               onclick="return confirm('Are you sure you want to delete this user?')">Pašalinti</a>
                         </td>
                     </tr>
                 </th:block>

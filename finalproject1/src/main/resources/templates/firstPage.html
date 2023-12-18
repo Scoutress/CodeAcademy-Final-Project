@@ -1,38 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head>
-        <title th:text="#{guestPage.title}">Guest Page</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-              rel="stylesheet" 
-              integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" 
-              crossorigin="anonymous" />
-    </head>
+<html lang="lt">
+<head>
+    <title>Receptai</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" 
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" 
+          crossorigin="anonymous" />
+</head>
 
-    <body>
-        <h2 th:text="#{guestPage.guestPageHeading}">Guest page</h2>
-        <hr>
-        <div>
-            <p class="mt-3"><a href="/login" class="btn btn-secondary" th:text="#{guestPage.loginButton}">Login</a></p>
-            <p class="mt-3"><a href="/admin/dashboard" class="btn btn-secondary" th:text="#{guestPage.dashboardButton}">Dashboard (temporary)</a></p>
+<body>
+    <h2>Receptai</h2>
+    <hr>
+    <div>
+        <p class="mt-3"><a href="/login" class="btn btn-secondary">Prisijungti (laikinai neveikia)</a></p>
+        <!--<p class="mt-3"><a href="/admin/dashboard" class="btn btn-secondary">Valdymo skydas (laikinai)</a></p>-->
+    </div>
 
-            <!-- Pridėtas kalbos keitimo mygtukas -->
-            <button onclick="changeLanguage('lt'); return false;">LT</button>
-            <button onclick="changeLanguage('en'); return false;">EN</button>
-        </div>
-
-        <!-- JavaScript funkcija kalbos keitimui -->
-        <script th:inline="javascript">
-            /*<![CDATA[*/
-            function changeLanguage(lang) {
-                var url = window.location.href;
-                var separator = (url.indexOf('?') !== -1) ? '&' : '?';
-                var newUrl = url + separator + 'lang=' + lang;
-                window.location.href = newUrl;
-            }
-            /*]]>*/
-        </script>        
-    </body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Pavadinimas</th>
+                <th scope="col">Veiksmai</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tempRecipe : ${recipes}">
+                <td th:text="${tempRecipe.title}"></td>
+                <td>
+                    <a th:href="@{/recipe/details(recipeId=${tempRecipe.id})}" class="btn btn-info btn-sm">Receptas</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
 </html>

@@ -3,7 +3,6 @@ package lt.codeacademy.javau7.finalproject1.servicesImpl;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lt.codeacademy.javau7.finalproject1.entities.Ingredient;
@@ -51,10 +50,8 @@ public class RecipeServiceImpl implements RecipeService{
     private RecipeIngredientService recipeIngredientService;
 
     public Recipe saveRecipe(Recipe recipe, List<Integer> ingredientIds, List<Integer> quantities) {
-        // Išsaugoti receptą į recipe lentelę
         Recipe savedRecipe = recipeRepository.save(recipe);
 
-        // Išsaugoti ingredientus ir kiekius į recipe_ingredients lentelę
         for (int i = 0; i < ingredientIds.size(); i++) {
             Integer ingredientId = ingredientIds.get(i);
             Integer quantity = quantities.get(i);

@@ -1,44 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="#{ingredient.title}">Add new ingredient</title>
+    <title>Pridėti ingridientą</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous">
 </head>
 <body class="container mt-5">
-    <h2 th:text="#{ingredient.addNew}">Add new ingredient</h2>
+    <h2>Pridėti ingridientą</h2>
     
-    <form th:action="@{/admin/ingr/new}" th:object="${newIngredient}" method="post" onsubmit="return validateForm()">
+    <form action="/admin/ingr/new" th:object="${newIngredient}" method="post" onsubmit="return validateForm()">
         <div class="mb-3">
-            <label for="name" class="form-label" th:text="#{ingredient.name}">Name:</label>
+            <label for="name" class="form-label">Pavadinimas:</label>
             <input type="text" class="form-control" id="name" th:field="*{name}" />
         </div>
         <div class="mb-3">
-            <label for="price" class="form-label" th:text="#{ingredient.price}">Price:</label>
+            <label for="price" class="form-label">Kaina:</label>
             <input type="text" class="form-control" id="price" th:field="${newIngredient.price}" />
             <small class="text-danger" id="priceError"></small>
         </div>
         <div class="mb-3">
-            <label for="unit" class="form-label" th:text="#{ingredient.unit}">Unit:</label>
+            <label for="unit" class="form-label">Matavimo vienetas:</label>
             <select class="form-control" id="unit" th:field="${newIngredient.unit}">
-                <option value="gram" th:text="#{ingredient.gram}">Gram</option>
-                <option value="mililiter" th:text="#{ingredient.mililiter}">Mililiter</option>
-                <option value="tablespoon" th:text="#{ingredient.tablespoon}">Tablespoon</option>
-                <option value="teaspoon" th:text="#{ingredient.teaspoon}">Teaspoon</option>
-                <option value="unit" th:text="#{ingredient.unitOption}">Unit</option>
+                <option value="gramas">Gramas</option>
+                <option value="mililitras">Mililitras</option>
+                <option value="šaukštas">Šaukštas</option>
+                <option value="šaukštelis">Šaukštelis</option>
+                <option value="vienetas">Vienetas</option>
             </select>
         </div>
         
-        <button type="submit" class="btn btn-primary" th:text="#{ingredient.add}">Add Ingredient</button>
+        <button type="submit" class="btn btn-primary">Pridėti ingridientą</button>
     </form>
 
     <br>
-    <p><a th:href="@{/admin/ingr/list}" class="btn btn-info" th:text="#{ingredient.backToList}">Back to Ingredient List</a></p>
-    <p class="mt-3"><a th:href="@{/admin/dashboard}" class="btn btn-secondary" th:text="#{ingredient.backToDashboard}">Back to Dashboard</a></p>
+    <p><a href="/admin/ingr/list" class="btn btn-info">Grįžti į ingridientų sąrašą</a></p>
+    <p class="mt-3"><a href="/admin/dashboard" class="btn btn-secondary">Valdymo skydas</a></p>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -50,13 +50,13 @@
             var priceError = document.getElementById("priceError");
             
             if (priceInput.value.includes(',')) {
-                priceError.textContent = "#{ingredient.useDotSeparator}";
+                priceError.textContent = "Use dot as a decimal separator";
                 return false;
             }
             
             var priceValue = parseFloat(priceInput.value);
             if (isNaN(priceValue)) {
-                priceError.textContent = "#{ingredient.enterValidNumber}";
+                priceError.textContent = "Enter a valid number";
                 return false;
             } else {
                 priceError.textContent = "";

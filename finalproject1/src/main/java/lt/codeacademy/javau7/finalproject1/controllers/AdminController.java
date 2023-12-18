@@ -15,6 +15,7 @@ import lt.codeacademy.javau7.finalproject1.services.IngredientService;
 import lt.codeacademy.javau7.finalproject1.services.RecipeService;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -64,13 +65,20 @@ public class AdminController {
     @PostMapping("/recipe/new")
     public String addRecipe(@ModelAttribute("newRecipe") Recipe recipe) {
         recipeService.addRecipe(recipe);
-        return "redirect:/recipe/list";
+        return "redirect:/admin/recipe/list";
+    }
+
+    @GetMapping("/recipe/list")
+    public String getAllRecipes(Model model) {
+        List<Recipe> recipes = recipeService.getAllRecipes();
+        model.addAttribute("recipes", recipes);
+        return "recipes/recipe-list";
     }
 
     @GetMapping("/recipe/delete")
     public String deleteRecipe(@RequestParam("recipeId") int theId){
         recipeService.deleteRecipeById(theId);
-        return "redirect:/recipe/list";    
+        return "redirect:/admin/recipe/list";    
     }
 
     @GetMapping("/recipe/showEditForm")
@@ -83,7 +91,7 @@ public class AdminController {
     @PostMapping("/recipe/save")
     public String saveRecipe(@ModelAttribute Recipe recipe) {
         recipeService.saveRecipe(recipe);
-        return "redirect:/recipe/list";
+        return "redirect:/admin/recipe/list";
     }
 
     @GetMapping("/recipe/details")
@@ -115,10 +123,11 @@ public class AdminController {
         return "redirect:/admin/ingr/list";
     }
 
-    @GetMapping("/ingr/delete")
-    public String deleteIngredient(@RequestParam("ingredientId") int theId){
-        ingredientService.deleteIngredientById(theId);
-        return "redirect:/admin/ingr/list";    
+    @GetMapping("/ingr/delete/{ingredientId}")
+    public String deleteIngredient(@PathVariable int ingredientId, RedirectAttributes redirectAttributes){
+        ingredientService.deleteIngredientById(ingredientId);
+        redirectAttributes.addFlashAttribute("message", "Ingredient deleted successfully");
+        return "redirect:/admin/ingr/list";
     }
 
     @GetMapping("/ingr/showEditForm")
