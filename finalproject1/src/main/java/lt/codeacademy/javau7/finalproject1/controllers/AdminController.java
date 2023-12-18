@@ -1,6 +1,5 @@
 package lt.codeacademy.javau7.finalproject1.controllers;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.ui.Model;
@@ -38,6 +37,25 @@ public class AdminController {
 /////////////////////////////////////////////////////////////////////////////
 //                                Receptai
 
+    // @GetMapping("/recipe/new")
+    // public String showRecipeForm(Model model) {
+    //     List<Ingredient> ingredients = ingredientService.getAllIngred();
+    //     model.addAttribute("ingredients", ingredients);
+    //     model.addAttribute("newRecipe", new Recipe());
+    //     return "recipes/recipe-add";
+    // }
+
+    // @PostMapping("/recipe/new")
+    // public String addRecipe(@ModelAttribute("newRecipe") Recipe recipe,
+    //                         @RequestParam(name = "ingredientIds") List<Integer> ingredientIds,
+    //                         @RequestParam(name = "quantities") List<Integer> quantities) {
+    //     // Išsaugoti receptą ir ingredientus
+    //     Recipe savedRecipe = recipeService.saveRecipe(recipe, ingredientIds, quantities);
+
+    //     return "redirect:/recipe/list";
+    // }
+
+
     @GetMapping("/recipe/new")
     public String showRecipeForm(Model model) {
         model.addAttribute("newRecipe", new Recipe());
@@ -45,7 +63,7 @@ public class AdminController {
     }
 
     @PostMapping("/recipe/new")
-    public String addRecipe(@ModelAttribute("recipe") Recipe recipe) {
+    public String addRecipe(@ModelAttribute("newRecipe") Recipe recipe) {
         recipeService.addRecipe(recipe);
         return "redirect:/recipe/list";
     }

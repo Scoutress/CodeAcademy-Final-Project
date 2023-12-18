@@ -16,4 +16,5 @@ public interface RecipeService {
 
     public void saveRecipe(Recipe recipe);
     
+    public Recipe saveRecipe(Recipe recipe, List<Integer> ingredientIds, List<Integer> quantities);
 }
